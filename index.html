@@ -1,0 +1,92 @@
+<html>
+<head>
+	<meta charset='utf-8'/>	
+	<link rel='stylesheet' href='style.css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400italic,400' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+	<section id='nutritionApp'>
+		<header id='header'>
+			<h1>Food calendar</h1>
+			<section id='search'>
+				<div class='row' id='food'>Food: <input id='searchField' placeholder='start typing food name' value=''> 
+				<div id='submitFood'><input type='submit' name='' value=''></div>
+				</div>
+
+				<div class='row'>
+					<div class='col-2'>
+						Weight: <input id='weightField' value='100' required> <span>grams</span>
+					</div>
+					<div class='col-2'>
+						kcal: <input id='kcalPerHundred' value="0" required></input> <span>per 100g</span>
+					</div>
+				</div>
+				<ul id='searchMenu'></ul>
+			</section>
+		</header>
+
+		<section id='main'>
+			<ul id='foodList'></ul>
+		</section>
+
+		<footer id='footer'>
+
+		</footer>
+	</section>
+	<div id='info'>
+
+		<p>Double click to edit list item</p>
+		<p>Written by <a href='https://github.com/Arcivus'>Sergey Kozhurkin</a></p>
+		<p>Powered by <a href='http://www.nutritionix.com/business/api'>Nutritionix API</a></p>
+	</div>
+
+
+	<script type='text/template' id='search-template'>
+		<div class='searchItem'>
+			<label><%=name%>(<i><%=brand%></i>), <%=kcal%> kcalories per 100 grams</label>
+		</div>
+	</script>
+
+	<script type='text/template' id='food-template'>
+		<div class='food-view'>
+			<label><%=name%>, <%=weight%>grams, <%=kcal%> kcal</label>
+			<button class='destroy'></button>
+		</div>
+		<input class='editName' value='<%= name %>'>
+		<input class='editWeight' value='<%= weight %>'>
+		<input class='editKcal' value='<%= kcal %>'>
+	</script>
+
+	<script type='text/template' id='stats-template'>
+		<span id='totalKcal'><strong><%=totalKcal%></strong> kcal total.</span>
+		<ul id='filters'></ul>
+	</script>
+
+	<script type='text/template' id='page-template'>
+		<div class='page-view'>
+			<a href='#/<%=title%>'><%=title%></a>
+			<button class='destroy'></button>
+		</div>
+	</script>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+	<script src="js/backbone.localStorage-min.js"></script>
+
+	<script src="js/collections/foods.js"></script>
+	<script src="js/collections/searchResults.js"></script>
+	<script src="js/collections/pages.js"></script>
+	<script src="js/views/foodView.js"></script>
+	<script src="js/views/appView.js"></script>
+	<script src="js/views/searchItemView.js"></script>
+	<script src="js/views/searchView.js"></script>
+	<script src="js/views/pageView.js"></script>
+	<script src="js/views/pageListView.js"></script>
+	<script src="js/routers/router.js"></script>
+	<script src="js/app.js"></script>
+		
+</body>
+</html>
